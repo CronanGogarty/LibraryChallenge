@@ -8,8 +8,19 @@
 </head>
 <body>
     <h1>Welcome to the library</h1>
-    <div class="library-challenge-results">
-        Results will appear here.
+    <button type="button" id="btnShowAll">Show All Books</button>
+    <br />
+    <label for="selCategory">Show Books by Category</label>
+    <select id="selCategory">
+        <option value="">Choose a category</option>
+        <option value="Biography">Biography</option>
+        <option value="Humour">Humour</option>
+        <option value="Mystery">Mystery</option>
+        <option value="Romance">Romance</option>
+        <option value="Scifi">Scifi</option>
+    </select>
+    <h2 id="searchType"></h2>
+    <div id="library-challenge-results" class="library-challenge-results">
     </div>
     <script src="/scripts/app/librarychallenge_task2.js"></script>
 </body>

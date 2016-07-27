@@ -1,5 +1,5 @@
 ﻿.library-challenge-results {
-    
+    margin-bottom:20px;
 }
 
 .library-challenge-add-book {
@@ -19,4 +19,12 @@
 
 .library-challenge-add-book button {
     background-color: lightblue;
+}
+
+.library-challenge-results .bookDiv {
+    outline:1px solid #000;
+    background-color:ActiveCaption;
+    color:#000;
+    margin:0 10px;
+    padding:0 10px;
 }
