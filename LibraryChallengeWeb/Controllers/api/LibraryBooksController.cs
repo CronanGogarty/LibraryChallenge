@@ -52,5 +52,28 @@ namespace LibraryChallengeWeb.Controllers.Api
 
             return Request.CreateResponse(HttpStatusCode.BadRequest, message);
         }
+
+        [Route("api/library/books/sort")]
+        public HttpResponseMessage GetSortedLibraryBooks()
+        {
+            var libraryService = new LibraryService();
+            IEnumerable<ILibraryBook> books = null; ;
+
+            foreach (LibraryBookCategory category in Enum.GetValues(typeof(LibraryBookCategory)))
+            {
+                books = libraryService.AllBooks(category);
+
+                List<LibraryBook> booklist = null;
+
+                foreach (LibraryBook book in books)
+                {
+                    booklist.Add(book);
+                }
+
+                booklist.Sort();
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, books);
+        }
     }
 }

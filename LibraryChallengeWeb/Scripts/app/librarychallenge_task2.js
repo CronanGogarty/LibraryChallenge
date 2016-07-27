@@ -3,6 +3,7 @@
 
     document.getElementById('btnShowAll').addEventListener('click', showAll, false);
     document.getElementById('selCategory').addEventListener('change', showByCategory, false);
+    document.getElementById('btnSortBooks').addEventListener('click', sortBooks, false);
     var searchType = document.getElementById('searchType');
 
     function showAll() {
@@ -39,9 +40,21 @@
         
     }
     
-
     function formatItem(item) {
         //return JSON.stringify(item);
+    }
+
+    function sortBooks() {
+        var uri = 'api/library/books/sort';
+        searchType.textContent = "Sort Books"
+        $('#library-challenge-results').empty();
+        $.getJSON(uri)
+            .done(function (data) {
+                $.each(data, function (key, item) {
+                    //$('<div>', { text: formatItem(item) }).appendTo('#library-challenge-results').addClass("bookDiv");
+                    $('#library-challenge-results').append('<div class="bookDiv"><h3>Title:&nbsp;' + item.title + '</h3><div><strong>Author:</strong>&nbsp;' + item.author + '<div><div><strong>ISBN:</strong>&nbsp;' + item.isbn + '</div><div><strong>Category:</strong>&nbsp;' + item.category + '</div><div><strong>Published Date:</strong>&nbsp;' + item.publishedDate + '</div><div><strong>On Loan To:</strong>&nbsp;' + item.lentToCustomerId + '</div><div><strong>Due Date:</strong>&nbsp;' + item.dueDate + '</div></div>');
+                });
+            });
     }
 
 });

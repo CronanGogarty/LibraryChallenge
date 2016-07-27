@@ -8,8 +8,9 @@
 </head>
 <body>
     <h1>Welcome to the library</h1>
-    <button type="button" id="btnShowAll">Show All Books</button>
-    <br />
+    <label for="btnShowAll">Show All Books</label>
+    <button type="button" id="btnShowAll">Show</button>
+    &nbsp;
     <label for="selCategory">Show Books by Category</label>
     <select id="selCategory">
         <option value="">Choose a category</option>
@@ -19,6 +20,11 @@
         <option value="Romance">Romance</option>
         <option value="Scifi">Scifi</option>
     </select>
+    &nbsp;
+    <label for="txtBookId">Checkout Book</label>
+    <input type="text" id="txtBookId" placeholder="Enter ID of book to checkout" size="50" />&nbsp;<button type="button" id="btnCheckout">Checkout</button>
+    &nbsp;
+    <button id="btnSortBooks">Sort</button>
     <h2 id="searchType"></h2>
     <div id="library-challenge-results" class="library-challenge-results">
     </div>
