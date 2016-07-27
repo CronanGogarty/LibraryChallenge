@@ -1,0 +1,22 @@
+﻿.library-challenge-results {
+    
+}
+
+.library-challenge-add-book {
+    background-color: #efefef;
+    padding: 12px;
+    width: 600px;
+}
+
+.library-challenge-add-book div {
+    margin: 12px 0 12px 0;
+}
+
+.library-challenge-add-book form label {
+    font-weight: bold;
+    width: 200px;
+}
+
+.library-challenge-add-book button {
+    background-color: lightblue;
+}
