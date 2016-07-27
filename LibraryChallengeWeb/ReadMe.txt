@@ -3,8 +3,10 @@
 
 *Scenario
 In our example tasks we are starting to build a solution that will allow libraries to manage the books they are loaning to members.
-The first task is a implement a method that will allow for library fines to be calculated for a collection of books. There are a number of rules that need to be applied to each book for the period of time it is overdue.
-The second task is extending the existing web api with a new feature that allow books to be listed grouped by category and display these results using HTML.
+The first task is a implement a method that will allow for library fines to be calculated for a collection of books. 
+There are a number of rules that need to be applied to each book for the period of time it is overdue.
+The second task is extending the existing web api with a new feature that allow books to be listed grouped by category 
+and display these results using HTML.
 
 *Suggested environment (if you dont already have Visual Studio)
 1. Visual Studio 2013 community edition
@@ -19,7 +21,8 @@ Please return the challenge to us within 48 hours of downloading / branching the
 *Task 1
 
 Steps
-1. The method CalculateTotalFine() can be found in the class LibraryChallengeCore\LibraryFineCalculator.cs. Using the rules below implement the method.
+1. The method CalculateTotalFine() can be found in the class LibraryChallengeCore\LibraryFineCalculator.cs. 
+Using the rules below implement the method.
 2. Make sure the tests pass in the class LibraryChallengeCoreTests\LibraryBookFineCalculatorFixture.cs.
 
 Rules

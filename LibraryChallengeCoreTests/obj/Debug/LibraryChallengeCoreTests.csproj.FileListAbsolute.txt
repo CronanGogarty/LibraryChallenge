@@ -1,0 +1,9 @@
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\LibraryChallengeCoreTests.dll
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\LibraryChallengeCoreTests.pdb
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\LibraryChallengeCore.dll
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\nunit.framework.dll
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\LibraryChallengeCore.pdb
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\nunit.framework.xml
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\obj\Debug\LibraryChallengeCoreTests.csprojResolveAssemblyReference.cache
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\obj\Debug\LibraryChallengeCoreTests.dll
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\obj\Debug\LibraryChallengeCoreTests.pdb
