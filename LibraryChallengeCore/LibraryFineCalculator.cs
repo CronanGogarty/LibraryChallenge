@@ -31,12 +31,14 @@ namespace LibraryChallengeCore
         {
             decimal totalFine = 0;
             decimal dailyFine = 0;
-            
+                        
 
             foreach (ILibraryBook book in books)
             {
                 //set a counter variable for each book in the collection
                 int dayCount = 0;
+                //initialize the current fine applied for this book
+                decimal currentBookFine = 0;
 
                 //establish if the book is currently on loan to a customer
                 if (true)   //(book.LentToCustomerId != null && book.LentToCustomerId.Length > 0)
@@ -69,7 +71,7 @@ namespace LibraryChallengeCore
                             else if (dayCount > 50)
                             {
                                 decimal percentToApply = 1 + (0.3M * (dayCount - 51));
-                                dailyFine = (totalFine * percentToApply) / 100;
+                                dailyFine = (currentBookFine * percentToApply) / 100;
                             }
 
                             //once the daily fine has been calculated, apply the special conditions for Sunday and Wednesday
@@ -81,15 +83,17 @@ namespace LibraryChallengeCore
                             {
                                 dailyFine = 0.00M;
                             }
-                            totalFine += dailyFine;
+                            currentBookFine += dailyFine;
                         }
                         #endregion
                         
                         //once totalFine has been calculated, apply the 25% discount for non-fiction (biography) books
                         if (book.Category == LibraryBookCategory.Biography)
                         {
-                            totalFine -= (totalFine * 25) / 100;
+                            currentBookFine -= (currentBookFine * 25) / 100;
                         }
+
+                        totalFine += currentBookFine;
                     }
                 }
             }
