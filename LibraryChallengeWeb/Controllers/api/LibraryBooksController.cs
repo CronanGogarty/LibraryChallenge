@@ -46,7 +46,7 @@ namespace LibraryChallengeWeb.Controllers.Api
                 if (result.CheckedOutResultStatus == CheckedOutResultStatus.Ok)
                 {
                     book.DueDate = dueDate;
-                    return Request.CreateResponse(HttpStatusCode.OK, new { BookId = bookId, DueDate = dueDate });    
+                    return Request.CreateResponse(HttpStatusCode.OK, new { BookId = bookId, DueDate = dueDate });
                 }
                 message = result.Message;
             }
@@ -62,23 +62,28 @@ namespace LibraryChallengeWeb.Controllers.Api
         public HttpResponseMessage GetSortedLibraryBooks()
         {
             var libraryService = new LibraryService();
-            IEnumerable<ILibraryBook> books = null; ;
+            int removeComma;
+            string jsonResult = "{\n\"Books\":\n{";
 
             foreach (LibraryBookCategory category in Enum.GetValues(typeof(LibraryBookCategory)))
             {
-                books = libraryService.AllBooks(category);
+                jsonResult += "\"" + category.ToString() + "\": [";
+                IEnumerable<ILibraryBook> books = libraryService.AllBooks(category);
 
-                List<LibraryBook> booklist = null;
-
-                foreach (LibraryBook book in books)
+                foreach (ILibraryBook book in books)
                 {
-                    booklist.Add(book);
+
+                    jsonResult += "{ \"title\":\"" + book.Title + "\", \"author\":\"" + book.Author + "\", \"isbn\":\"" + book.Isbn + "\", \"dueDate\":\"" + book.DueDate + "\"},\n";
                 }
-
-                booklist.Sort();
+                removeComma = jsonResult.LastIndexOf(',');
+                jsonResult = jsonResult.Remove(removeComma, 1);
+                jsonResult += "],";
             }
+                removeComma = jsonResult.LastIndexOf(',');
+                jsonResult = jsonResult.Remove(removeComma, 1);
+                jsonResult += "}}";
 
-            return Request.CreateResponse(HttpStatusCode.OK, books);
+            return Request.CreateResponse(HttpStatusCode.OK, jsonResult);
         }
     }
 }
