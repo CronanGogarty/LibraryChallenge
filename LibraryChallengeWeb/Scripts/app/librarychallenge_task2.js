@@ -34,7 +34,7 @@
                 .done(function (data) {
                     $.each(data, function (key, item) {
                         //$('<div>', { text: formatItem(item) }).appendTo('#library-challenge-results').addClass("bookDiv");
-                        $('#library-challenge-results').append('<div class="bookDiv"><h3>Title:&nbsp;' + item.title + '</h3><div><strong>Author:</strong>&nbsp;' + item.author + '<div><div><strong>ISBN:</strong>&nbsp;' + item.isbn + '</div><div><strong>Category:</strong>&nbsp;' + item.category + '</div><div><strong>Published Date:</strong>&nbsp;' + item.publishedDate + '</div><div><strong>On Loan To:</strong>&nbsp;' + item.lentToCustomerId + '</div><div><strong>Due Date:</strong>&nbsp;' + item.dueDate + '</div></div>');
+                        $('#library-challenge-results').append('<div class="bookDiv"><h3>Title:&nbsp;' + item.title + '</h3><div><strong>Author:</strong>&nbsp;' + item.author + '<div><div><strong>ISBN:</strong>&nbsp;' + item.isbn + '</div><div><strong>Category:</strong>&nbsp;' + item.category + '</div><div><strong>Published Date:</strong>&nbsp;' + item.publishedDate + '</div><div><strong>On Loan To:</strong>&nbsp;' + item.lentToCustomerId + '</div><div><strong>Due Date:</strong>&nbsp;' + item.dueDate + '</div><div><strong>Book GUID:</strong>&nbsp;' + item.bookId + '</div></div>');
                     })
                 });
         }
@@ -55,14 +55,17 @@
     }
 
     function checkout() {
-        console.log('checkout running...');
         var bookId = $('#txtBookId').val();
         var uri = 'api/library/books/' + bookId + '/checkout';
         searchType.textContent = "Checkout Book";
         $('#library-challenge-results').empty();
         $.post(uri)
             .done(function (data) {
-                $('#library-challenge-results').append(data);
+                var bookId = data.bookId;
+                var dueDate = new Date(data.dueDate);
+                var outputString = "Book with ID = " + bookId + ";<br />has been checked out until " + dueDate.getDay() + "-" + (dueDate.getMonth() + 1) + "-" + dueDate.getFullYear();
+                console.log(bookId + " " + dueDate);
+                $('#library-challenge-results').html(outputString);
             });
     }
 

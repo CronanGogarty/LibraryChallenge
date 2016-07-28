@@ -45,6 +45,7 @@ namespace LibraryChallengeWeb.Controllers.Api
 
                 if (result.CheckedOutResultStatus == CheckedOutResultStatus.Ok)
                 {
+                    book.DueDate = dueDate;
                     return Request.CreateResponse(HttpStatusCode.OK, new { BookId = bookId, DueDate = dueDate });    
                 }
                 message = result.Message;
