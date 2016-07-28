@@ -49,6 +49,10 @@ namespace LibraryChallengeWeb.Controllers.Api
                 }
                 message = result.Message;
             }
+            else
+            {
+                message = "Book does not exist";
+            }
 
             return Request.CreateResponse(HttpStatusCode.BadRequest, message);
         }

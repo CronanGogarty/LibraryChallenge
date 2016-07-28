@@ -39,6 +39,8 @@ namespace LibraryChallengeCore.Data
 
                     DueDate = null,
                     LentToCustomerId = string.Empty,
+
+                    BookId = new Guid("9D2B0228-4D0D-4C23-8B49-01A698857709"),
                 });
                 books.Add(new LibraryBook
                 {
