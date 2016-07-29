@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using LibraryChallengeCore;
+using System.Linq;
 
 namespace LibraryChallengeWeb.Controllers.Api
 {
@@ -62,28 +63,48 @@ namespace LibraryChallengeWeb.Controllers.Api
         public HttpResponseMessage GetSortedLibraryBooks()
         {
             var libraryService = new LibraryService();
-            int removeComma;
-            string jsonResult = "{\n\"Books\":\n{";
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            List<CategoryBookList> listOfCategories = new List<CategoryBookList>();
 
             foreach (LibraryBookCategory category in Enum.GetValues(typeof(LibraryBookCategory)))
             {
-                jsonResult += "\"" + category.ToString() + "\": [";
                 IEnumerable<ILibraryBook> books = libraryService.AllBooks(category);
+                List<ILibraryBook> bookList = books.ToList<ILibraryBook>();
 
-                foreach (ILibraryBook book in books)
-                {
+                ILibraryBookFineCalculator calculator = new LibraryBookFineCalculator();
 
-                    jsonResult += "{ \"title\":\"" + book.Title + "\", \"author\":\"" + book.Author + "\", \"isbn\":\"" + book.Isbn + "\", \"dueDate\":\"" + book.DueDate + "\"},\n";
-                }
-                removeComma = jsonResult.LastIndexOf(',');
-                jsonResult = jsonResult.Remove(removeComma, 1);
-                jsonResult += "],";
+                CategoryBookList catBookList = new CategoryBookList(bookList);
+                catBookList.CategoryTotalFine = calculator.CalculateTotalFine(DateTime.Now, bookList);
+                catBookList.CategoryString = category.ToString();
+                //catBookList.Category = category;
+                listOfCategories.Add(catBookList);
             }
-                removeComma = jsonResult.LastIndexOf(',');
-                jsonResult = jsonResult.Remove(removeComma, 1);
-                jsonResult += "}}";
+            
+            ////int removeComma;
 
-            return Request.CreateResponse(HttpStatusCode.OK, jsonResult);
+            ////HttpResponseMessage.
+            //string jsonResult = "{\n\"Books\":\n{";
+
+            ////foreach (LibraryBookCategory category in Enum.GetValues(typeof(LibraryBookCategory)))
+            ////{
+            ////    jsonResult += "\"" + category.ToString() + "\": [";
+            ////    IEnumerable<ILibraryBook> books = libraryService.AllBooks(category);
+
+            ////    foreach (ILibraryBook book in books)
+            ////    {
+
+            ////        jsonResult += "{ \"title\":\"" + book.Title + "\", \"author\":\"" + book.Author + "\", \"isbn\":\"" + book.Isbn + "\", \"dueDate\":\"" + book.DueDate + "\"},\n";
+            ////    }
+            ////    removeComma = jsonResult.LastIndexOf(',');
+            ////    jsonResult = jsonResult.Remove(removeComma, 1);
+            ////    jsonResult += "],";
+            ////}
+            ////    removeComma = jsonResult.LastIndexOf(',');
+            ////    jsonResult = jsonResult.Remove(removeComma, 1);
+            //    jsonResult += "}}";
+
+            return Request.CreateResponse(HttpStatusCode.OK, listOfCategories);
         }
     }
 }

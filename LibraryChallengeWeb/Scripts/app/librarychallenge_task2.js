@@ -21,10 +21,10 @@
     }
 
     function showByCategory() {
-        
+
         var e = document.getElementById('selCategory');
         if (e.selectedIndex != 0) {
-            
+
             var selectedCategory = e.options[e.selectedIndex].text;
             var uri = 'api/library/books/' + selectedCategory;
             searchType.textContent = "Show All " + selectedCategory + " Books";
@@ -38,7 +38,7 @@
                     })
                 });
         }
-        
+
     }
 
     function sortBooks() {
@@ -48,10 +48,18 @@
         $.getJSON(uri)
             .done(function (data) {
                 $.each(data, function (key, item) {
-                    //$('<div>', { text: formatItem(item) }).appendTo('#library-challenge-results').addClass("bookDiv");
-                    $('#library-challenge-results').append('<div class="bookDiv"><h3>Title:&nbsp;' + item.title + '</h3><div><strong>Author:</strong>&nbsp;' + item.author + '<div><div><strong>ISBN:</strong>&nbsp;' + item.isbn + '</div><div><strong>Category:</strong>&nbsp;' + item.category + '</div><div><strong>Published Date:</strong>&nbsp;' + item.publishedDate + '</div><div><strong>On Loan To:</strong>&nbsp;' + item.lentToCustomerId + '</div><div><strong>Due Date:</strong>&nbsp;' + item.dueDate + '</div></div>');
+                    $('<div>', { text: formatCategory(item) }).appendTo('#library-challenge-results').addClass("categoryContainer");
+
                 });
             });
+    }
+
+    function formatCategory(item) {
+        return "Category: " + item.categoryString;
+    }
+
+    function formatBook(item) {
+        return "title: " + item.title + "; " + item.author + "; " + item.isbn + "; " + item.dueDate;
     }
 
     function checkout() {

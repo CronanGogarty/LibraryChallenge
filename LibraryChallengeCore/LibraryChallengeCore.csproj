@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryBookList.cs" />
     <Compile Include="CheckoutResult.cs" />
     <Compile Include="Data\LibraryData.cs" />
     <Compile Include="ILibraryBook.cs" />
