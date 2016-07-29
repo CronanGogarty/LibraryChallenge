@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LibraryChallengeCore
 {
-    public class CategoryBookList 
+    public class CategoryBookList
     {
-        //public LibraryBookCategory Category { get; set; }
-        public string CategoryString { get; set; }
+        private LibraryBookCategory category;
+        //public string CategoryString { get; set; }
         public IEnumerable<ILibraryBook> Books { get; set; }
         public decimal CategoryTotalFine { get; set; }
 
@@ -19,6 +19,15 @@ namespace LibraryChallengeCore
             {
                 Books = books;
             }
+        }
+
+        public string Category
+        {
+            get
+            {
+                return category.ToString();
+            }
+            set { }
         }
     }
 }

@@ -48,18 +48,27 @@
         $.getJSON(uri)
             .done(function (data) {
                 $.each(data, function (key, item) {
-                    $('<div>', { text: formatCategory(item) }).appendTo('#library-challenge-results').addClass("categoryContainer");
+                    var books = new Array();
+                    $('<div>', { text: formatCategory(item) }).appendTo('#library-challenge-results').addClass("categoryContainer").attr('id', item.categoryString);
+                    for (var i = 0; i < item.books.length; i++) {
+                        books.push(item.books[i]);
+                    }
 
+                    for (var i = 0; i < books.length; i++) {
+                        $('<div>', { text: formatBook(books[i]) }).appendTo('#' + item.categoryString).addClass();
+                    }
+
+                    
                 });
             });
     }
 
     function formatCategory(item) {
-        return "Category: " + item.categoryString;
+        return "Category: " + item.categoryString + "; Total Due For Category: " + item.categoryTotalFine;
     }
 
     function formatBook(item) {
-        return "title: " + item.title + "; " + item.author + "; " + item.isbn + "; " + item.dueDate;
+        return "Title: " + item.title + ";\nAuthor: " + item.author + ";\nISBN: " + item.isbn + ";\nDue Date: " + item.dueDate;
     }
 
     function checkout() {
