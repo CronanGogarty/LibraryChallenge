@@ -3,7 +3,7 @@
 
     document.getElementById('btnShowAll').addEventListener('click', showAll, false);
     document.getElementById('selCategory').addEventListener('change', showByCategory, false);
-    document.getElementById('btnSortBooks').addEventListener('click', sortBooks, false);
+    $('#btnSortBooks').click(sortBooks);
     document.getElementById('btnCheckout').addEventListener('click', checkout, false);
     var searchType = document.getElementById('searchType');
 
@@ -42,34 +42,51 @@
     }
 
     function sortBooks() {
-        var uri = 'api/library/books/sort';
+        var uri = 'api/library/books/sort/';
         searchType.textContent = "Sort Books"
-        $('#library-challenge-results').empty();
-        //$.getJSON(uri)
-        //    .done(function (data) {
-        //        $.each(data, function (key, item) {
-        //            var books = new Array();
-        //            $('<div>', { text: formatCategory(item) }).appendTo('#library-challenge-results').addClass("categoryContainer").attr('id', item.categoryString);
-        //            for (var i = 0; i < item.books.length; i++) {
-        //                books.push(item.books[i]);
-        //            }
+        $('#library-challenge-results').empty();        
 
-        //            for (var i = 0; i < books.length; i++) {
-        //                $('<div>', { text: formatBook(books[i]) }).appendTo('#' + item.categoryString).addClass();
-        //            }
+        //$.ajax({
+        //    url: uri,
+        //    method: 'get',
+        //    dataType: 'json',
+        //    cache: false,
+        //    success: function (data) {
+        //        console.log(data);
+        //    }
+        //});
 
+        $.getJSON(uri)
+            .done(function (data) {
+                $(data).each(function (index, value) {
+                    console.log(value.categoryTotalFine);
+                    console.log(value.category);
+                    $(value.books).each(function (index, value) {
+                        console.log("books[" + index + "].title= " + value.title);
+                        console.log("\t.author = " + value.author);
+                        console.log("\t.isbn = " + value.isbn);
+                        if (value.dueDate != null) {
+                            
+                            var dueDate = new Date(value.dueDate);
+                            console.log("\t.dueDate = " + dueDate.toDateString());
+                            if (dueDate < new Date(Date.now())) {
+                                console.log("\t\tOverdue!!!");
+                            }
+                            else if (dueDate === new Date(Date.now())) {
+                                console.log("\t\tDue today!");
 
-        //        });
-        //    });
-
-        //$.getJSON(uri, function (data) { console.log(data) });
-
-        $.ajax({
-            url: 'api/library/books/sort',
-            dataType: 'application/json',
-            type: 'get'
-        }).done(function () { console.log(".ajax worked...") });
+                            }
+                            else {
+                                console.log("\tNot due...");
+                            }
+                        }
+                        
+                    })
+                });
+            });
     }
+
+
 
     function formatCategory(item) {
         return "Category: " + item.categoryString + "; Total Due For Category: " + item.categoryTotalFine;

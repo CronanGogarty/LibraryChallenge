@@ -74,8 +74,8 @@ namespace LibraryChallengeWeb.Controllers.Api
                 ILibraryBookFineCalculator calculator = new LibraryBookFineCalculator();
 
                 //create the object you will return to the client
-                CategoryBookList catBookList = new CategoryBookList(bookList);
-                catBookList.CategoryTotalFine = calculator.CalculateTotalFine(DateTime.Now, bookList);
+                string categoryString = category.ToString();
+                CategoryBookList catBookList = new CategoryBookList(bookList, categoryString, calculator.CalculateTotalFine(DateTime.Now, bookList));
                 listOfCategories.Add(catBookList);
             }
 

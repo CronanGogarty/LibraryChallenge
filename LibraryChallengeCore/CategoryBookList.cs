@@ -8,26 +8,29 @@ namespace LibraryChallengeCore
 {
     public class CategoryBookList
     {
-        private LibraryBookCategory category;
-        //public string CategoryString { get; set; }
+        public string Category { get; set; }
         public IEnumerable<ILibraryBook> Books { get; set; }
         public decimal CategoryTotalFine { get; set; }
 
-        public CategoryBookList(IEnumerable<ILibraryBook> books)
+        //public CategoryBookList()
+        //{
+
+        //}
+
+        public CategoryBookList(IEnumerable<ILibraryBook> books, string category, decimal categoryTotalFine)
         {
             if (books != null)
             {
                 Books = books;
             }
-        }
-
-        public string Category
-        {
-            get
+            if (category != null)
             {
-                return category.ToString();
+                Category = category;
             }
-            set { }
+            if (true)    //TODO: test type is decimal
+            {
+                CategoryTotalFine = categoryTotalFine;
+            }
         }
     }
 }
