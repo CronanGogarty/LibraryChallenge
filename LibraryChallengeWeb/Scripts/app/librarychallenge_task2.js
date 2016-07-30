@@ -45,22 +45,30 @@
         var uri = 'api/library/books/sort';
         searchType.textContent = "Sort Books"
         $('#library-challenge-results').empty();
-        $.getJSON(uri)
-            .done(function (data) {
-                $.each(data, function (key, item) {
-                    var books = new Array();
-                    $('<div>', { text: formatCategory(item) }).appendTo('#library-challenge-results').addClass("categoryContainer").attr('id', item.categoryString);
-                    for (var i = 0; i < item.books.length; i++) {
-                        books.push(item.books[i]);
-                    }
+        //$.getJSON(uri)
+        //    .done(function (data) {
+        //        $.each(data, function (key, item) {
+        //            var books = new Array();
+        //            $('<div>', { text: formatCategory(item) }).appendTo('#library-challenge-results').addClass("categoryContainer").attr('id', item.categoryString);
+        //            for (var i = 0; i < item.books.length; i++) {
+        //                books.push(item.books[i]);
+        //            }
 
-                    for (var i = 0; i < books.length; i++) {
-                        $('<div>', { text: formatBook(books[i]) }).appendTo('#' + item.categoryString).addClass();
-                    }
+        //            for (var i = 0; i < books.length; i++) {
+        //                $('<div>', { text: formatBook(books[i]) }).appendTo('#' + item.categoryString).addClass();
+        //            }
 
-                    
-                });
-            });
+
+        //        });
+        //    });
+
+        //$.getJSON(uri, function (data) { console.log(data) });
+
+        $.ajax({
+            url: 'api/library/books/sort',
+            dataType: 'application/json',
+            type: 'get'
+        }).done(function () { console.log(".ajax worked...") });
     }
 
     function formatCategory(item) {

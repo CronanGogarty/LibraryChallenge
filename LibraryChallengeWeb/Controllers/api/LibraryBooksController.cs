@@ -63,7 +63,6 @@ namespace LibraryChallengeWeb.Controllers.Api
         public HttpResponseMessage GetSortedLibraryBooks()
         {
             var libraryService = new LibraryService();
-            HttpResponseMessage response = new HttpResponseMessage();
 
             List<CategoryBookList> listOfCategories = new List<CategoryBookList>();
 
@@ -77,7 +76,6 @@ namespace LibraryChallengeWeb.Controllers.Api
                 //create the object you will return to the client
                 CategoryBookList catBookList = new CategoryBookList(bookList);
                 catBookList.CategoryTotalFine = calculator.CalculateTotalFine(DateTime.Now, bookList);
-                //catBookList.CategoryString = category.ToString();
                 listOfCategories.Add(catBookList);
             }
 
