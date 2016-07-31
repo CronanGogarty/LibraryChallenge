@@ -29,10 +29,38 @@
     padding:0 10px;
 }
 
-#library-challenge-results .categoryContainer {
+#library-challenge-results .divCategoryContainer {
     display:block;
     outline:1px solid #000;
     background-color:#dcd3e0;
     margin:10px;
-    padding:10px
+    padding:10px;
+    overflow-y:hidden;
+    min-height:80px;
+}
+
+#library-challenge-results .divCategoryContainer div{
+    clear:both;
+}
+
+#library-challenge-results .divBookItem {
+    outline:1px solid #000;
+    background-color:#dcd3e0;
+    display:block;
+}
+
+#library-challenge-results .dueDateOK    {
+    background-color:greenyellow;
+}
+
+#library-challenge-results .dueDateOverdue    {
+    background-color:#fa1c15;
+}
+
+#library-challenge-results .dueDateToday    {
+    background-color:orange;
+}
+
+.caughtDiv {
+    outline:5px groove #ffea00;
 }

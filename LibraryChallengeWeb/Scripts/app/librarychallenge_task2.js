@@ -1,11 +1,15 @@
 ﻿$(document).ready(function () {
     //alert('library challenge task 2 ready');
-
     document.getElementById('btnShowAll').addEventListener('click', showAll, false);
     document.getElementById('selCategory').addEventListener('change', showByCategory, false);
     $('#btnSortBooks').click(sortBooks);
     document.getElementById('btnCheckout').addEventListener('click', checkout, false);
     var searchType = document.getElementById('searchType');
+
+    function toggleDetails(e) {
+        var category = $(e);
+        console.log(e);
+    }
 
     function showAll() {
         var uri = 'api/library/books';
@@ -44,40 +48,63 @@
     function sortBooks() {
         var uri = 'api/library/books/sort/';
         searchType.textContent = "Sort Books"
-        $('#library-challenge-results').empty();        
-
-        //$.ajax({
-        //    url: uri,
-        //    method: 'get',
-        //    dataType: 'json',
-        //    cache: false,
-        //    success: function (data) {
-        //        console.log(data);
-        //    }
-        //});
+        $('#library-challenge-results').empty();
 
         $.getJSON(uri)
+        
             .done(function (data) {
-                $(data).each(function (index, value) {
-                    console.log(value.categoryTotalFine);
-                    console.log(value.category);
-                    $(value.books).each(function (index, value) {
-                        console.log("books[" + index + "].title= " + value.title);
-                        console.log("\t.author = " + value.author);
-                        console.log("\t.isbn = " + value.isbn);
-                        if (value.dueDate != null) {
-                            
-                            var dueDate = new Date(value.dueDate);
-                            console.log("\t.dueDate = " + dueDate.toDateString());
-                            if (dueDate < new Date(Date.now())) {
-                                console.log("\t\tOverdue!!!");
-                            }
-                            else if (dueDate === new Date(Date.now())) {
-                                console.log("\t\tDue today!");
+                $(data).each(function (index, catValue) {
+                    //for each data object contained in the JSON payload
+                    //1)create a category=container div with id="div"+Category
+                    //2)add class to category-container
+                    //3)append div to library-challenge-results div
+                    //4)count the number of books in the category
+                    
+                    var bookCount = $(catValue.books).toArray().length;
+                    var currentCategoryContainer = $('<div>').addClass('divCategoryContainer')
+                        //.html("<summary><h2>" + catValue.category + "</h2><h3>Total Owed in Category: " + catValue.categoryTotalFine + "</h3><h4>Total Books: " + bookCount + "</h4></summary>")
+                        .attr("id", function () {
+                            return "div" + catValue.category;
+                        })
+                        .appendTo($('#library-challenge-results'))
 
+                    var detailsWrapper = $('<details>').appendTo(currentCategoryContainer);
+
+                    var currentSummary = $("<summary><h2>" + catValue.category + "</h2><h3>Total Owed in Category: " + catValue.categoryTotalFine + "</h3><h4>Total Books: " + bookCount + "</h4></summary>").on('click', toggleDetails)
+                        .appendTo(detailsWrapper);
+
+                    var bookPara = $('<p>').appendTo(detailsWrapper);
+                    
+                    //for each book within the category
+                    $(catValue.books).each(function (index, bookValue) {
+                        //set some variables to hold book data
+                        var dateString = bookValue.dueDate;
+                        var currentDueDate;
+                        if (dateString != null && dateString != "") {
+                            currentDueDate = new Date(dateString);
+                        }
+                        else
+                            currentDueDate = null;
+
+                        //instantiate a div for each book, add html to output book properties
+                        //append this div to category container
+                        var currentBook = $('<div>').addClass('divBookItem')
+                            .html("<ul><li>" + bookValue.title + "</li><li>" + bookValue.author + "</li><li>" + bookValue.isbn + "</li><li>" + currentDueDate + "</li></ul>")
+                            .attr("id", function () {
+                                return "divBook" + bookValue.isbn
+                            })
+                        .appendTo(bookPara)
+
+                        //add css class based on dueDate value
+                        if (currentDueDate != null) {
+                            if (currentDueDate < new Date(Date.now())) {
+                                $(currentBook).addClass("dueDateOverdue");
+                            }
+                            else if (currentDueDate === new Date(Date.now())) {
+                                $(currentBook).addClass("dueDateToday");
                             }
                             else {
-                                console.log("\tNot due...");
+                                $(currentBook).addClass("dueDateOK");
                             }
                         }
                         
@@ -88,13 +115,13 @@
 
 
 
-    function formatCategory(item) {
-        return "Category: " + item.categoryString + "; Total Due For Category: " + item.categoryTotalFine;
-    }
+    //function formatCategory(item) {
+    //    return "Category: " + item.categoryString + "; Total Due For Category: " + item.categoryTotalFine;
+    //}
 
-    function formatBook(item) {
-        return "Title: " + item.title + ";\nAuthor: " + item.author + ";\nISBN: " + item.isbn + ";\nDue Date: " + item.dueDate;
-    }
+    //function formatBook(item) {
+    //    return "Title: " + item.title + ";\nAuthor: " + item.author + ";\nISBN: " + item.isbn + ";\nDue Date: " + item.dueDate;
+    //}
 
     function checkout() {
         var bookId = $('#txtBookId').val();
