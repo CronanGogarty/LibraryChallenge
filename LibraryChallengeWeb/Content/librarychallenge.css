@@ -1,5 +1,5 @@
 ﻿.library-challenge-results {
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
 .library-challenge-add-book {
@@ -8,59 +8,100 @@
     width: 600px;
 }
 
-.library-challenge-add-book div {
-    margin: 12px 0 12px 0;
-}
+    .library-challenge-add-book div {
+        margin: 12px 0 12px 0;
+    }
 
-.library-challenge-add-book form label {
-    font-weight: bold;
-    width: 200px;
-}
+    .library-challenge-add-book form label {
+        font-weight: bold;
+        width: 200px;
+    }
 
-.library-challenge-add-book button {
-    background-color: lightblue;
-}
+    .library-challenge-add-book button {
+        background-color: lightblue;
+    }
 
 .library-challenge-results .bookDiv {
-    outline:1px solid #000;
-    background-color:ActiveCaption;
-    color:#000;
-    margin:0 10px;
-    padding:0 10px;
+    outline: 1px solid #000;
+    background-color: ActiveCaption;
+    color: #000;
+    margin: 0 10px;
+    padding: 0 10px;
 }
+
 
 #library-challenge-results .divCategoryContainer {
-    display:block;
-    outline:1px solid #000;
-    background-color:#dcd3e0;
-    margin:10px;
-    padding:10px;
-    overflow-y:hidden;
-    min-height:80px;
+    display: block;
+    outline: 1px solid #000;
+    background-color: #dcd3e0;
+    margin: 10px;
+    padding: 10px;
+    min-height: 80px;
 }
 
-#library-challenge-results .divCategoryContainer div{
-    clear:both;
-}
+    #library-challenge-results .divCategoryContainer div {
+        clear: both;
+    }
 
 #library-challenge-results .divBookItem {
-    outline:1px solid #000;
-    background-color:#dcd3e0;
-    display:block;
+    outline: 1px solid #000;
+    background-color: #dcd3e0;
+    display: block;
 }
 
-#library-challenge-results .dueDateOK    {
-    background-color:greenyellow;
+#library-challenge-results .dueDateOK {
+    background-color: greenyellow;
 }
 
-#library-challenge-results .dueDateOverdue    {
-    background-color:#fa1c15;
+#library-challenge-results .dueDateOverdue {
+    background-color: #fa1c15;
 }
 
-#library-challenge-results .dueDateToday    {
-    background-color:orange;
+#library-challenge-results .dueDateToday {
+    background-color: orange;
 }
 
 .caughtDiv {
-    outline:5px groove #ffea00;
+    outline: 5px groove #ffea00;
+}
+
+/*----- Accordion -----*/
+.accordion, .accordion * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.accordion {
+    overflow: hidden;
+}
+
+/*----- Section Titles -----*/
+.accordion-section-title {
+    width: 100%;
+    display: inline-block;
+    border-bottom: 1px solid #1a1a1a;
+    -moz-transition: all linear 0.15s;
+    -o-transition: all linear 0.15s;
+    -webkit-transition: all linear 0.15s;
+    transition: all linear 0.15s;
+    font-size: 1.200em;
+}
+
+.accordion-section-title.active {
+    background: rgba(153, 180, 209, 0.5);
+}
+
+    .accordion-section-title:hover {
+    background-color: rgba(153, 180, 209, 1.0);
+}
+
+.accordion-section:last-child .accordion-section-title {
+    border-bottom: none;
+}
+
+/*----- Section Content -----*/
+.accordion-section-content {
+    padding: 15px;
+    display: none;
 }

@@ -6,9 +6,10 @@
     document.getElementById('btnCheckout').addEventListener('click', checkout, false);
     var searchType = document.getElementById('searchType');
 
-    function toggleDetails(e) {
-        var category = $(e);
-        console.log(e);
+    //toggle display of books
+    function close_accordion_section() {
+        $('.accordion .accordion-section-title').removeClass('active');
+        $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
     }
 
     function showAll() {
@@ -61,19 +62,37 @@
                     //4)count the number of books in the category
                     
                     var bookCount = $(catValue.books).toArray().length;
-                    var currentCategoryContainer = $('<div>').addClass('divCategoryContainer')
+                    var currentCategoryContainer = $('<div>').addClass('divCategoryContainer accordion-section')
                         //.html("<summary><h2>" + catValue.category + "</h2><h3>Total Owed in Category: " + catValue.categoryTotalFine + "</h3><h4>Total Books: " + bookCount + "</h4></summary>")
                         .attr("id", function () {
                             return "div" + catValue.category;
                         })
-                        .appendTo($('#library-challenge-results'))
+                        .appendTo($('#library-challenge-results').addClass('accordion'));
 
                     var detailsWrapper = $('<details>').appendTo(currentCategoryContainer);
 
-                    var currentSummary = $("<summary><h2>" + catValue.category + "</h2><h3>Total Owed in Category: " + catValue.categoryTotalFine + "</h3><h4>Total Books: " + bookCount + "</h4></summary>").on('click', toggleDetails)
+                    var currentSummary = $("<div><summary><h2>" + catValue.category + "</h2><h3>Total Owed in Category: $" + catValue.categoryTotalFine + "</h3><h4>Total Books: " + bookCount + "</h4></a></summary></div>").attr('href', '#accordion-'+ catValue.category).on('click', function (e) {
+
+                        //toggle view of books in category
+                        var currentAttrValue = $(this).attr('href');
+                        var targetDiv = $(this);
+
+                        if ($(targetDiv).is('.active')) {
+
+                            close_accordion_section();
+                        } else {
+
+                            // Add active class to section title
+                            $(this).addClass('active');
+                            // Open up the hidden content panel
+                            $('.accordion ' + currentAttrValue).slideDown(300).addClass('open');
+                        }
+
+                        e.preventDefault();
+                    }).addClass('accordion-section-title')
                         .appendTo(detailsWrapper);
 
-                    var bookPara = $('<p>').appendTo(detailsWrapper);
+                    var bookPara = $('<div>').addClass('accordion-section-content ').attr('id', 'accordion-' + catValue.category).appendTo(detailsWrapper);
                     
                     //for each book within the category
                     $(catValue.books).each(function (index, bookValue) {
@@ -112,16 +131,6 @@
                 });
             });
     }
-
-
-
-    //function formatCategory(item) {
-    //    return "Category: " + item.categoryString + "; Total Due For Category: " + item.categoryTotalFine;
-    //}
-
-    //function formatBook(item) {
-    //    return "Title: " + item.title + ";\nAuthor: " + item.author + ";\nISBN: " + item.isbn + ";\nDue Date: " + item.dueDate;
-    //}
 
     function checkout() {
         var bookId = $('#txtBookId').val();
