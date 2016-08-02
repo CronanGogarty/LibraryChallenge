@@ -45,7 +45,7 @@
 
 #library-challenge-results .divBookItem {
     outline: 1px solid #000;
-    background-color: #dcd3e0;
+    background-color: #99b4d1;
     display: block;
 }
 
@@ -54,7 +54,7 @@
 }
 
 #library-challenge-results .dueDateOverdue {
-    background-color: #fa1c15;
+    background-color: #ff5733;
 }
 
 #library-challenge-results .dueDateToday {

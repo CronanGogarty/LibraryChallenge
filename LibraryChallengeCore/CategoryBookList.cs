@@ -12,11 +12,6 @@ namespace LibraryChallengeCore
         public IEnumerable<ILibraryBook> Books { get; set; }
         public decimal CategoryTotalFine { get; set; }
 
-        //public CategoryBookList()
-        //{
-
-        //}
-
         public CategoryBookList(IEnumerable<ILibraryBook> books, string category, decimal categoryTotalFine)
         {
             if (books != null)
@@ -27,10 +22,13 @@ namespace LibraryChallengeCore
             {
                 Category = category;
             }
-            if (true)    //TODO: test type is decimal
-            {
-                CategoryTotalFine = categoryTotalFine;
+            //test type is decimal
+            decimal result;
+            string input = categoryTotalFine.ToString();
+            if (Decimal.TryParse(input, out result))    {
+                CategoryTotalFine = result;
             }
+            
         }
     }
 }
