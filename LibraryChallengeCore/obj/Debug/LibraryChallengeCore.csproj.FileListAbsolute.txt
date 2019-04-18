@@ -1,5 +1,6 @@
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCore\bin\Debug\LibraryChallengeCore.dll
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCore\bin\Debug\LibraryChallengeCore.pdb
-C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCore\obj\Debug\LibraryChallengeCore.csprojResolveAssemblyReference.cache
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCore\obj\Debug\LibraryChallengeCore.dll
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCore\obj\Debug\LibraryChallengeCore.pdb
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCore\obj\Debug\LibraryChallengeCore.csprojAssemblyReference.cache
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCore\obj\Debug\LibraryChallengeCore.csproj.CoreCompileInputs.cache

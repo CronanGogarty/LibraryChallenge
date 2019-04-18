@@ -29,6 +29,8 @@ C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryCh
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeWeb\bin\System.Net.Http.Formatting.xml
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeWeb\bin\System.Web.Http.xml
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeWeb\bin\System.Web.Http.WebHost.xml
-C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeWeb\obj\Debug\LibraryChallengeWeb.csprojResolveAssemblyReference.cache
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeWeb\obj\Debug\LibraryChallengeWeb.dll
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeWeb\obj\Debug\LibraryChallengeWeb.pdb
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeWeb\obj\Debug\LibraryChallengeWeb.csprojAssemblyReference.cache
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeWeb\obj\Debug\LibraryChallengeWeb.csproj.CoreCompileInputs.cache
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeWeb\obj\Debug\LibraryChallengeWeb.csproj.CopyComplete

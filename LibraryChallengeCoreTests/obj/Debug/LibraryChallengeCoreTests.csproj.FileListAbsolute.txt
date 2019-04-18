@@ -4,6 +4,11 @@ C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryCh
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\nunit.framework.dll
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\LibraryChallengeCore.pdb
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\nunit.framework.xml
-C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\obj\Debug\LibraryChallengeCoreTests.csprojResolveAssemblyReference.cache
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\obj\Debug\LibraryChallengeCoreTests.dll
 C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\obj\Debug\LibraryChallengeCoreTests.pdb
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\Microsoft.Data.Tools.Components.dll
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\obj\Debug\LibraryChallengeCoreTests.csprojAssemblyReference.cache
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\obj\Debug\LibraryChallengeCoreTests.csproj.CoreCompileInputs.cache
+C:\Users\cronan\Documents\Visual Studio 2013\Projects\LibraryChallenge\LibraryChallengeCoreTests\obj\Debug\LibraryChallengeCoreTests.csproj.CopyComplete
